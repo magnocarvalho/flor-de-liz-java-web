@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ItempedidoEditDlg" widgetVar="ItempedidoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditItempedidoTitle}">
+            <h:form id="ItempedidoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{itempedidoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditItempedidoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{itempedidoController.selected.id}" title="#{bundle.EditItempedidoTitle_id}" required="true" requiredMessage="#{bundle.EditItempedidoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditItempedidoLabel_quantidade}" for="quantidade" />
+                        <p:inputText id="quantidade" value="#{itempedidoController.selected.quantidade}" title="#{bundle.EditItempedidoTitle_quantidade}" required="true" requiredMessage="#{bundle.EditItempedidoRequiredMessage_quantidade}"/>
+                        <p:outputLabel value="#{bundle.EditItempedidoLabel_tamano}" for="tamano" />
+                        <p:inputText id="tamano" value="#{itempedidoController.selected.tamano}" title="#{bundle.EditItempedidoTitle_tamano}" required="true" requiredMessage="#{bundle.EditItempedidoRequiredMessage_tamano}"/>
+                        <p:outputLabel value="#{bundle.EditItempedidoLabel_valor}" for="valor" />
+                        <p:inputText id="valor" value="#{itempedidoController.selected.valor}" title="#{bundle.EditItempedidoTitle_valor}" required="true" requiredMessage="#{bundle.EditItempedidoRequiredMessage_valor}"/>
+                        <p:outputLabel value="#{bundle.EditItempedidoLabel_idproduto}" for="idproduto" />
+                        <p:selectOneMenu id="idproduto" value="#{itempedidoController.selected.idproduto}" required="true" requiredMessage="#{bundle.EditItempedidoRequiredMessage_idproduto}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{calcadoController.itemsAvailableSelectOne}"
+                                           var="idprodutoItem"
+                                           itemValue="#{idprodutoItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditItempedidoLabel_idpedido}" for="idpedido" />
+                        <p:selectOneMenu id="idpedido" value="#{itempedidoController.selected.idpedido}" required="true" requiredMessage="#{bundle.EditItempedidoRequiredMessage_idpedido}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{pedidoController.itemsAvailableSelectOne}"
+                                           var="idpedidoItem"
+                                           itemValue="#{idpedidoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{itempedidoController.update}" value="#{bundle.Save}" update="display,:ItempedidoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'ItempedidoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ItempedidoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

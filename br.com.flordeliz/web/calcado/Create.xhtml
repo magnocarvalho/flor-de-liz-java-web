@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CalcadoCreateDlg" widgetVar="CalcadoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateCalcadoTitle}">
+            <h:form id="CalcadoCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{calcadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{calcadoController.selected.id}" title="#{bundle.CreateCalcadoTitle_id}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{calcadoController.selected.nome}" title="#{bundle.CreateCalcadoTitle_nome}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_nome}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_colecao}" for="colecao" />
+                        <p:inputText id="colecao" value="#{calcadoController.selected.colecao}" title="#{bundle.CreateCalcadoTitle_colecao}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_colecao}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_tamMax}" for="tamMax" />
+                        <p:inputText id="tamMax" value="#{calcadoController.selected.tamMax}" title="#{bundle.CreateCalcadoTitle_tamMax}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_tamMax}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_tamMin}" for="tamMin" />
+                        <p:inputText id="tamMin" value="#{calcadoController.selected.tamMin}" title="#{bundle.CreateCalcadoTitle_tamMin}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_tamMin}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_precoCusto}" for="precoCusto" />
+                        <p:inputText id="precoCusto" value="#{calcadoController.selected.precoCusto}" title="#{bundle.CreateCalcadoTitle_precoCusto}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_precoCusto}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_cor}" for="cor" />
+                        <p:inputText id="cor" value="#{calcadoController.selected.cor}" title="#{bundle.CreateCalcadoTitle_cor}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_cor}"/>
+                        <p:outputLabel value="#{bundle.CreateCalcadoLabel_valorVenda}" for="valorVenda" />
+                        <p:inputText id="valorVenda" value="#{calcadoController.selected.valorVenda}" title="#{bundle.CreateCalcadoTitle_valorVenda}" required="true" requiredMessage="#{bundle.CreateCalcadoRequiredMessage_valorVenda}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{calcadoController.create}" value="#{bundle.Save}" update="display,:CalcadoListForm:datalist,:growl" oncomplete="handleSubmit(args,'CalcadoCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CalcadoCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

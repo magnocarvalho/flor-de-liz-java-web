@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CalcadoEditDlg" widgetVar="CalcadoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditCalcadoTitle}">
+            <h:form id="CalcadoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{calcadoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_id}" for="id" />
+                        <p:inputText id="id" value="#{calcadoController.selected.id}" title="#{bundle.EditCalcadoTitle_id}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{calcadoController.selected.nome}" title="#{bundle.EditCalcadoTitle_nome}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_nome}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_colecao}" for="colecao" />
+                        <p:inputText id="colecao" value="#{calcadoController.selected.colecao}" title="#{bundle.EditCalcadoTitle_colecao}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_colecao}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_tamMax}" for="tamMax" />
+                        <p:inputText id="tamMax" value="#{calcadoController.selected.tamMax}" title="#{bundle.EditCalcadoTitle_tamMax}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_tamMax}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_tamMin}" for="tamMin" />
+                        <p:inputText id="tamMin" value="#{calcadoController.selected.tamMin}" title="#{bundle.EditCalcadoTitle_tamMin}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_tamMin}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_precoCusto}" for="precoCusto" />
+                        <p:inputText id="precoCusto" value="#{calcadoController.selected.precoCusto}" title="#{bundle.EditCalcadoTitle_precoCusto}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_precoCusto}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_cor}" for="cor" />
+                        <p:inputText id="cor" value="#{calcadoController.selected.cor}" title="#{bundle.EditCalcadoTitle_cor}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_cor}"/>
+                        <p:outputLabel value="#{bundle.EditCalcadoLabel_valorVenda}" for="valorVenda" />
+                        <p:inputText id="valorVenda" value="#{calcadoController.selected.valorVenda}" title="#{bundle.EditCalcadoTitle_valorVenda}" required="true" requiredMessage="#{bundle.EditCalcadoRequiredMessage_valorVenda}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{calcadoController.update}" value="#{bundle.Save}" update="display,:CalcadoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'CalcadoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="CalcadoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

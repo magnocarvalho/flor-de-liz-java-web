@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CalcadoViewDlg" widgetVar="CalcadoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewCalcadoTitle}">
+            <h:form id="CalcadoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{calcadoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_id}"/>
+                        <h:outputText value="#{calcadoController.selected.id}" title="#{bundle.ViewCalcadoTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_nome}"/>
+                        <h:outputText value="#{calcadoController.selected.nome}" title="#{bundle.ViewCalcadoTitle_nome}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_colecao}"/>
+                        <h:outputText value="#{calcadoController.selected.colecao}" title="#{bundle.ViewCalcadoTitle_colecao}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_tamMax}"/>
+                        <h:outputText value="#{calcadoController.selected.tamMax}" title="#{bundle.ViewCalcadoTitle_tamMax}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_tamMin}"/>
+                        <h:outputText value="#{calcadoController.selected.tamMin}" title="#{bundle.ViewCalcadoTitle_tamMin}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_precoCusto}"/>
+                        <h:outputText value="#{calcadoController.selected.precoCusto}" title="#{bundle.ViewCalcadoTitle_precoCusto}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_cor}"/>
+                        <h:outputText value="#{calcadoController.selected.cor}" title="#{bundle.ViewCalcadoTitle_cor}"/>
+                        <h:outputText value="#{bundle.ViewCalcadoLabel_valorVenda}"/>
+                        <h:outputText value="#{calcadoController.selected.valorVenda}" title="#{bundle.ViewCalcadoTitle_valorVenda}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="CalcadoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
